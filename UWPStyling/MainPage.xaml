@@ -7,7 +7,31 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <!-- Comment/uncomment next line to demo resource precedence-->
+        <!--<SolidColorBrush x:Key="mainBrush" Color="Blue"/>-->
+    </Page.Resources>
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel.Resources>
+            <Thickness x:Key="thickness1">10</Thickness>
+            <!-- Comment/uncomment next line to demo resource precedence-->
+            <!--<SolidColorBrush x:Key="mainBrush" Color="Red"/>-->
+            <SolidColorBrush x:Key="accentBrush" Color="Yellow"/>
+            <Thickness x:Key="padding1">20</Thickness>
+            <x:Double x:Key="titleFontSize">50</x:Double>
 
-    </Grid>
+            <!-- Style with key -->
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="100"/>
+            </Style>
+
+            <!-- Style w/o key sets styles for buttons that don't have explicit styles set -->
+            <Style TargetType="Button">
+                <Setter Property="Foreground" Value="Wheat"/>
+            </Style>
+            
+        </StackPanel.Resources>
+        <Button Content="This is a button" Style="{StaticResource ButtonStyle}" />
+        <Button Content="This is a button" FontSize="{StaticResource titleFontSize}" BorderBrush="{StaticResource mainBrush}" BorderThickness="{StaticResource thickness1}"/>
+    </StackPanel>
 </Page>
